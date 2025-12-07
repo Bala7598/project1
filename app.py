@@ -6,7 +6,7 @@ import pandas as pd
 # 1. LOAD CSV DATA
 # -------------------------------
 # Replace <username> and <repo-name> with your GitHub info
-csv_url = "https://raw.githubusercontent.com/<username>/<repo-name>/main/earthquakes.csv"
+csv_url = "https://raw.githubusercontent.com/Bala7598/project1/refs/heads/main/earthquake"
 
 # Load CSV
 df = pd.read_csv(csv_url)
@@ -216,3 +216,4 @@ if st.button("Run Analysis"):
     result_df = question_funcs[selected](df)
     st.write("### 🔎 Result:")
     st.dataframe(result_df)
+

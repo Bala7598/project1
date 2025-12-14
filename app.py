@@ -1,32 +1,12 @@
 # app.py
 import streamlit as st
 import pandas as pd
-import mysql.connector
-from mysql.connector import Error
 
 # -------------------------------
-# 1. LOAD DATA (MYSQL FIRST, THEN FALLBACK TO CSV)
+# 1. LOAD CSV DATA FROM GITHUB
 # -------------------------------
-def load_data():
-    try:
-        # Attempt to connect to MySQL
-        conn = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="bala7598",
-            database="EQdb"
-        )
-        df = pd.read_sql("SELECT * FROM earthquakes", conn)
-        conn.close()
-        st.success("✅ Loaded data from MySQL database")
-        return df
-    except Error as e:
-        st.warning(f"⚠ Could not connect to MySQL. Using GitHub CSV.\nError: {e}")
-        csv_url = "https://raw.githubusercontent.com/Bala7598/project1/main/earthquake_db.csv"
-        df = pd.read_csv(csv_url)
-        return df
-
-df = load_data()
+csv_url = "https://raw.githubusercontent.com/Bala7598/project1/main/earthquake_db.csv"
+df = pd.read_csv(csv_url)
 
 # Ensure 'time' column is datetime
 if 'time' in df.columns:

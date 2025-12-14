@@ -5,7 +5,7 @@ import pandas as pd
 # -------------------------------
 # 1. LOAD CSV DATA FROM GITHUB
 # -------------------------------
-csv_url = "https://raw.githubusercontent.com/Bala7598/project1/main/earthquake_db.csv"
+csv_url = "https://raw.githubusercontent.com/Bala7598/project1/main/earthquake_db1.csv"
 df = pd.read_csv(csv_url)
 
 # Ensure 'time' column is datetime
@@ -128,3 +128,4 @@ if st.button("Run Analysis"):
     result_df = question_funcs[selected](df)
     st.write("### 🔎 Result:")
     st.dataframe(result_df)
+

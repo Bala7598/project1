@@ -5,8 +5,14 @@ import pandas as pd
 # -------------------------------
 # 1. LOAD CSV DATA FROM GITHUB
 # -------------------------------
-csv_url = "https://raw.githubusercontent.com/Bala7598/project1/main/earthquake_db1.csv"
-df = pd.read_csv(csv_url)
+from sqlalchemy import create_engine
+
+engine = create_engine(
+    "mysql+pymysql://root:bala7598@localhost:3306/EQdb"
+)
+
+df = pd.read_sql("SELECT * FROM earthquakes", engine)
+
 
 # Ensure 'time' column is datetime
 if 'time' in df.columns:
@@ -128,4 +134,5 @@ if st.button("Run Analysis"):
     result_df = question_funcs[selected](df)
     st.write("### 🔎 Result:")
     st.dataframe(result_df)
+
 
